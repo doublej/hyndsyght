@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*
+  Every colour derives from the project hue. --hue, --plate-l and --plate-c are
+  set per project by src/lib/theme.ts (injected in +layout.svelte); the values
+  below are only the fallback.
+*/
+:root {
+  --hue: 262;
+  --plate-l: 0.72;
+  --plate-c: 0.13;
+
+  --plate: oklch(var(--plate-l) var(--plate-c) var(--hue));
+  --paper: oklch(0.985 0.005 var(--hue));
+  --paper-tint: oklch(0.955 0.014 var(--hue));
+  --ink: oklch(0.22 0.03 var(--hue));
+  --ink-soft: oklch(0.42 0.025 var(--hue));
+  --ink-faint: oklch(0.52 0.02 var(--hue));
+  --rule: oklch(0.88 0.012 var(--hue));
+
+  --term-bg: oklch(0.2 0.02 var(--hue));
+  --term-bar: oklch(0.255 0.022 var(--hue));
+  --term-text: oklch(0.9 0.01 var(--hue));
+  --term-dim: oklch(0.64 0.015 var(--hue));
+
+  --font-text: 'Familjen Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Martian Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --section-padding: clamp(56px, 9vw, 112px);
+  --container-max-width: 1200px;
+  --container-padding: clamp(16px, 4vw, 48px);
+  --grid-gap: clamp(24px, 4vw, 56px);
+}
+
+body {
+  font-family: var(--font-text);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+code, pre {
+  font-family: var(--font-mono);
+  font-stretch: 87.5%;
+}
+
+h1, h2, h3 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--plate);
+  text-decoration-thickness: 0.14em;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* The plate: the full-bleed field in the project colour. Used at most twice per page. */
+.plate {
+  background: var(--plate);
+  color: var(--ink);
+}
+
+.plate a {
+  text-decoration-color: currentColor;
+}
+
+/* Terminal output. Default text needs no class. */
+.t-prompt { color: var(--plate); margin-right: 0.75em; user-select: none; }
+.t-prompt::before { content: '$'; }
+.t-hi { color: var(--plate); }
+.t-dim { color: var(--term-dim); }
+.t-ok { color: oklch(0.82 0.14 150); }
+.t-err { color: oklch(0.72 0.16 25); }
+
+/* Comparison table: the project's own column is .ours */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.975rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 14px 18px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--rule);
+}
+
+.compare-table thead :is(th, td) {
+  font-weight: 600;
+  border-bottom: 2px solid var(--ink);
+}
+
+.compare-table tbody th {
+  font-weight: 500;
+}
+
+.compare-table td {
+  color: var(--ink-soft);
+}
+
+.compare-table .ours {
+  background: color-mix(in oklch, var(--plate) 28%, var(--paper));
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

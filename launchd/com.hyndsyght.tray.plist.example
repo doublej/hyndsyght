@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Documentation only. The real com.hyndsyght.tray.plist is generated
+	     by `hyndsyght setup` (or `just service-install tray` after
+	     ensure_plist), which fills in {repo_root} and {home} for your
+	     machine — see src/hyndsyght/setup/daemon.py. -->
+	<key>Label</key>
+	<string>com.hyndsyght.tray</string>
+
+	<key>ProgramArguments</key>
+	<array>
+		<string>{repo_root}/.venv/bin/hyndsyght</string>
+		<string>tray</string>
+	</array>
+
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+	<dict>
+		<key>SuccessfulExit</key>
+		<false/>
+	</dict>
+	<key>LimitLoadToSessionType</key>
+	<string>Aqua</string>
+
+	<key>StandardOutPath</key>
+	<string>{home}/Library/Logs/hyndsyght/tray.out.log</string>
+	<key>StandardErrorPath</key>
+	<string>{home}/Library/Logs/hyndsyght/tray.err.log</string>
+
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>HOME</key>
+		<string>{home}</string>
+		<key>PATH</key>
+		<string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,20 @@
+{
+  "template": "python/cli",
+  "template_version": "2.3.0",
+  "template_source": {
+    "type": "local",
+    "path": "/Users/jurrejan/dev/_management/cookiecutter-templates",
+    "git_remote": "git@github.com:doublej/cookiecutter-templates.git",
+    "git_sha": "fd11604ad9cbce67923302fcec830d13ab4e6860"
+  },
+  "rendered_at": "2026-09-21T21:54:16.460494+00:00",
+  "context": {
+    "project_name": "hyndsyght",
+    "project_slug": "hyndsyght",
+    "description": "A lightweight timetracking application with tasteful and easy to usee UI.",
+    "author": "Jurre-Jan Smit",
+    "python_version": "3.13",
+    "mcp_servers": "none",
+    "mcp_scope": "project"
+  }
+}

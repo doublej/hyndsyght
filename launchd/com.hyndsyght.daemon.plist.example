@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Documentation only. The real com.hyndsyght.daemon.plist is generated
+	     by `hyndsyght setup` (or `just service-install`), which fills in
+	     {repo_root} and {home} for your machine — see
+	     src/hyndsyght/setup/daemon.py. -->
+	<key>Label</key>
+	<string>com.hyndsyght.daemon</string>
+
+	<key>ProgramArguments</key>
+	<array>
+		<string>{repo_root}/.venv/bin/hyndsyght</string>
+		<string>daemon</string>
+	</array>
+
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+	<true/>
+
+	<key>StandardOutPath</key>
+	<string>{home}/Library/Logs/hyndsyght/daemon.out.log</string>
+	<key>StandardErrorPath</key>
+	<string>{home}/Library/Logs/hyndsyght/daemon.err.log</string>
+
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>HOME</key>
+		<string>{home}</string>
+		<key>PATH</key>
+		<string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,49 @@
+{
+  "cli": {
+    "repair": {
+      "cwd_restored": "Projectpad hersteld op {count} agent-events.",
+      "durations_capped": "{count} agent-eventduren begrensd die onbegrensd liepen.",
+      "phantoms_removed": "{count} agent-events zonder bijbehorende start verwijderd."
+    }
+  },
+  "hello": {
+    "greeting": "Hallo vanuit {name}!",
+    "languages": {
+      "one": "Beschikbaar in {count} taal.",
+      "other": "Beschikbaar in {count} talen."
+    }
+  },
+  "tray": {
+    "today": "Vandaag: {time}",
+    "now": "Nu: {activity}",
+    "idle": "Inactief",
+    "paused": "Gepauzeerd tot je hervat",
+    "paused_until": "Gepauzeerd tot {time}",
+    "open": "Dashboard openen",
+    "pause": {
+      "title": "Registratie pauzeren",
+      "15m": "15 minuten",
+      "1h": "1 uur",
+      "forever": "Tot ik hervat"
+    },
+    "resume": "Registratie hervatten",
+    "restart_daemon": "Daemon herstarten",
+    "daemon_down": "⚠ De daemon draait niet",
+    "permission_off": "⚠ Schermopname lijkt uit te staan",
+    "quit": "hyndsyght afsluiten"
+  },
+  "export": {
+    "help": "Print je uren per lokale dag, per project, klant en categorie. Leest alleen de opslag.",
+    "since": "Eerste dag van de export, als JJJJ-MM-DD.",
+    "until": "Laatste dag van de export, als JJJJ-MM-DD. Standaard vandaag.",
+    "json": "Print de JSON van schema 1. Dit is de standaard.",
+    "csv": "Print uren per dag en klant, afgerond op 15 minuten."
+  },
+  "tester": {
+    "help": "Laat zien wat elke categorie- en klantregel de afgelopen dagen raakte, in uren.",
+    "days": "Hoeveel dagen terug je leest, vandaag meegeteld.",
+    "category": "Categorieën",
+    "client": "Klanten",
+    "empty": "Geen activiteit in de afgelopen {days} dagen. Start de daemon om te beginnen met bijhouden."
+  }
+}

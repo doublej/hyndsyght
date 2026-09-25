@@ -1,0 +1,49 @@
+{
+  "cli": {
+    "repair": {
+      "cwd_restored": "Restored the project path on {count} agent events.",
+      "durations_capped": "Capped {count} agent event durations left unbounded.",
+      "phantoms_removed": "Removed {count} agent events with no matching start."
+    }
+  },
+  "hello": {
+    "greeting": "Hello from {name}!",
+    "languages": {
+      "one": "Available in {count} language.",
+      "other": "Available in {count} languages."
+    }
+  },
+  "tray": {
+    "today": "Today: {time}",
+    "now": "Now: {activity}",
+    "idle": "Idle",
+    "paused": "Paused until you resume",
+    "paused_until": "Paused until {time}",
+    "open": "Open dashboard",
+    "pause": {
+      "title": "Pause tracking",
+      "15m": "15 minutes",
+      "1h": "1 hour",
+      "forever": "Until I resume"
+    },
+    "resume": "Resume tracking",
+    "restart_daemon": "Restart daemon",
+    "daemon_down": "⚠ Daemon is not running",
+    "permission_off": "⚠ Screen Recording looks off",
+    "quit": "Quit hyndsyght"
+  },
+  "export": {
+    "help": "Print finished hours per local day, per project, client and category. Reads the store only.",
+    "since": "First day to export, as YYYY-MM-DD.",
+    "until": "Last day to export, as YYYY-MM-DD. Defaults to today.",
+    "json": "Print the schema 1 JSON. This is the default.",
+    "csv": "Print hours per day and client, rounded to 15 minutes."
+  },
+  "tester": {
+    "help": "Show what each category and client rule matched over recent days, in hours.",
+    "days": "How many days back to read, today included.",
+    "category": "Categories",
+    "client": "Clients",
+    "empty": "No activity in the last {days} days. Start the daemon to begin tracking."
+  }
+}
