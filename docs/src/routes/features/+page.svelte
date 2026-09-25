@@ -27,6 +27,13 @@
       command: 'uv run --extra mcp hyndsyght mcp serve',
       output: ['list_recent_events', 'get_attention_summary', 'get_ledger_summary'],
     },
+    {
+      title: 'Bring your ActivityWatch history',
+      body: 'Coming from ActivityWatch? Open Status in the dashboard and pick the computers whose window and away history you want. Titles on your hidden list stay out. The import stops where hyndsyght started recording, so no minute counts twice. You can remove it again at any time.',
+      command: 'hyndsyght import activitywatch --dry-run',
+      output: [],
+      screen: 'import',
+    },
   ]
 
   const screens = [
@@ -63,13 +70,20 @@
         <div>
           <h2 id="feature-{i}">{feature.title}</h2>
           <p>{feature.body}</p>
+          {#if feature.screen}
+            <p class="cli">From the command line: <code>{feature.command}</code></p>
+          {/if}
         </div>
-        <Terminal title="~/hyndsyght">
-          <div><span class="t-prompt"></span>{feature.command}</div>
-          {#each feature.output as line}
-            <div>{line || ' '}</div>
-          {/each}
-        </Terminal>
+        {#if feature.screen}
+          <Screenshot screen={feature.screen} alt="The import wizard in the hyndsyght dashboard, showing two computers found in ActivityWatch." height={540} />
+        {:else}
+          <Terminal title="~/hyndsyght">
+            <div><span class="t-prompt"></span>{feature.command}</div>
+            {#each feature.output as line}
+              <div>{line || ' '}</div>
+            {/each}
+          </Terminal>
+        {/if}
       </div>
     </section>
   {/each}
@@ -159,6 +173,7 @@
   }
 
   .feature p { color: var(--ink-soft); max-width: 40ch; }
+  .feature .cli { margin-top: 14px; font-size: 0.9rem; }
 
   .dashboard { padding-top: 0; }
   .dashboard .feature-grid { align-items: end; margin-bottom: clamp(32px, 5vw, 56px); }

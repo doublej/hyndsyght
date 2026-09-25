@@ -2,6 +2,7 @@
   import { poll } from "../lib/poll.svelte";
   import { relativeAge } from "../lib/format";
   import type { StatusReport } from "../lib/api";
+  import { buildHash } from "../lib/route";
 
   let {}: { params?: URLSearchParams } = $props();
 
@@ -67,3 +68,11 @@
     {/each}
   </section>
 {/if}
+
+<section class="card">
+  <h2>History from other trackers</h2>
+  <a class="card" href={buildHash("import")}>
+    <strong>Import from ActivityWatch</strong>
+    <p class="muted">Bring in the window and away history it recorded before hyndsyght started.</p>
+  </a>
+</section>

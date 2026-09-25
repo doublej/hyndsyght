@@ -3,7 +3,7 @@
 
   // A dashboard screen in the same window chrome as Terminal. `screen` is the
   // file name under static/screens/ and the dashboard's own #hash route.
-  let { screen, alt }: { screen: string; alt: string } = $props()
+  let { screen, alt, height = 1000 }: { screen: string; alt: string; height?: number } = $props()
 </script>
 
 <figure class="screenshot">
@@ -12,7 +12,7 @@
     src="{base}/screens/{screen}.webp"
     {alt}
     width="1136"
-    height="1000"
+    {height}
     loading="lazy"
     decoding="async"
   />

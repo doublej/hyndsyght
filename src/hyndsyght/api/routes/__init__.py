@@ -8,6 +8,7 @@ from hyndsyght.api.routes.activity import register_activity_routes
 from hyndsyght.api.routes.events import register_events_routes
 from hyndsyght.api.routes.insights import register_insights_routes
 from hyndsyght.api.routes.meta import register_meta_routes
+from hyndsyght.importers.api import register_import_routes
 
 
 def build_router(verify_token: Callable[[Request], None]) -> APIRouter:
@@ -16,4 +17,5 @@ def build_router(verify_token: Callable[[Request], None]) -> APIRouter:
     register_events_routes(router)
     register_insights_routes(router)
     register_meta_routes(router)
+    register_import_routes(router)
     return router

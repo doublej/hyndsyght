@@ -45,5 +45,25 @@
     "category": "Categories",
     "client": "Clients",
     "empty": "No activity in the last {days} days. Start the daemon to begin tracking."
+  },
+  "importer": {
+    "help": "Bring history from another tracker into hyndsyght.",
+    "aw": {
+      "help": "Import window and away history from ActivityWatch. It stops where hyndsyght's own recording begins, and running it again replaces what it imported before.",
+      "url": "Address of a running ActivityWatch server.",
+      "file": "Read an ActivityWatch export (the JSON from /api/0/export) instead of a running server.",
+      "host": "Only import buckets from this computer name. Repeat it for more than one.",
+      "dry_run": "Show what would be imported without writing anything.",
+      "undo": "Remove everything imported from ActivityWatch.",
+      "bucket": "{bucket}: {rows} rows, {first} to {last}.",
+      "bucket_empty": "{bucket}: nothing to import.",
+      "hidden": "{count} with a hidden title.",
+      "cutoff": "Stopped at {time}, where hyndsyght's own recording begins, so no minute is counted twice.",
+      "done": "Imported {rows} rows.",
+      "dry_run_done": "Dry run: {rows} rows would be imported. Nothing was written.",
+      "removed": "Removed {count} rows imported from ActivityWatch.",
+      "none": "No ActivityWatch window or away buckets found.",
+      "unreachable": "Can't reach ActivityWatch at {url}. Start it, or pass --file with an export."
+    }
   }
 }

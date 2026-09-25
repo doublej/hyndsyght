@@ -9,6 +9,7 @@ watchers, Claude Code agent-activity tracking, and a local dashboard.
 - Tracks Claude Code agent activity (6 lifecycle hooks) via a spool-based hook entrypoint
 - `hyndsyght serve` — local dashboard (Events / Attention / Ledger tabs)
 - `hyndsyght mcp serve` — read-only MCP server over your tracked data
+- `hyndsyght import activitywatch` — brings your ActivityWatch history in
 
 ## Quick start
 
@@ -27,6 +28,23 @@ re-run — every step is idempotent.
 hyndsyght status    # human-readable health check (add --json for the raw report)
 hyndsyght serve     # opens the dashboard in your browser
 ```
+
+## Import from ActivityWatch
+
+```bash
+hyndsyght import activitywatch --dry-run   # what would come in, per bucket
+hyndsyght import activitywatch             # from the server on localhost:5600
+hyndsyght import activitywatch --file export.json   # or from an /api/0/export file
+hyndsyght import activitywatch --undo      # remove everything it imported
+```
+
+It reads the `aw-watcher-window` and `aw-watcher-afk` buckets of every
+computer (limit with `--host`). It skips editor, Screen Time and other
+third-party buckets. Events shorter than the daemon's 3-second tick fold into
+the row before them, so the history gets hyndsyght's own resolution without
+losing time. The hidden and away lists apply before anything is written. The
+import stops where hyndsyght's own recording begins, so no minute counts twice.
+Running it again replaces the earlier import.
 
 ## Daemon
 
@@ -56,6 +74,7 @@ src/hyndsyght/
 ├── agentwatch/     Claude Code hook spool + ingest + reap
 ├── api/            FastAPI app: auth, routes, dashboard host
 ├── categorize/      title → category rules (TOML, hand-edited)
+├── importers/      `hyndsyght import` — ActivityWatch history into the store
 ├── insights/       Attention Physics + Leverage Ledger computations
 ├── mcpserver/      read-only MCP server over the event store
 ├── platform/       macOS watchers (window/AFK/media) behind a Protocol seam

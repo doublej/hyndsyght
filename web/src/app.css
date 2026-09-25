@@ -748,6 +748,7 @@ pre {
 
 .daily-labels span {
   flex: 1;
+  min-width: 0; /* at 366 days a column is ~3px: the label may overflow it, not the row */
   font-size: var(--step--1);
   font-stretch: 75%;
   color: var(--ink-soft);

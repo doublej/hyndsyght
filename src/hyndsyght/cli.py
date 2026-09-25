@@ -18,6 +18,7 @@ from hyndsyght.categorize.preview import categorize_group
 from hyndsyght.export.days import export_days, to_csv
 from hyndsyght.export.tester import rule_test
 from hyndsyght.i18n import LOCALES, locale_from_env, t
+from hyndsyght.importers.cli import import_group
 from hyndsyght.setup.wizard import setup_command
 from hyndsyght.store import db
 from hyndsyght.store import query as query_store
@@ -50,6 +51,7 @@ categorize_group.add_command(rule_test)
 main.add_command(categorize_group)
 main.add_command(agent_event_group)
 main.add_command(setup_command)
+main.add_command(import_group)
 
 
 @main.command()

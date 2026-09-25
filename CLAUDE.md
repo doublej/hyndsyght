@@ -13,6 +13,7 @@ src/hyndsyght/
 ├── __init__.py
 ├── cli.py          # Click entry point — function `main`
 ├── i18n.py         # `t()` + locale resolution: --lang → LC_ALL / LC_MESSAGES / LANG → en
+├── importers/      # `hyndsyght import activitywatch`: AW history → raw_events, uid `aw:<bucket>:<id>`
 ├── tray/           # `hyndsyght tray`: menu-bar app hosting the dashboard; model.py is AppKit-free
 └── locales/        # en.json (base, fallback) + nl.json — every user-facing string
 pyproject.toml      # [project.scripts] binds `hyndsyght` → `hyndsyght.cli:main`

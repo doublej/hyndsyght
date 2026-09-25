@@ -10,6 +10,7 @@
   import AttentionView from "./views/AttentionView.svelte";
   import LedgerView from "./views/LedgerView.svelte";
   import StatusView from "./views/StatusView.svelte";
+  import ImportView from "./views/ImportView.svelte";
 
   const VIEWS = [
     { id: "overview", label: "Today", component: OverviewView },
@@ -21,6 +22,8 @@
     { id: "ledger", label: "Human vs agent", component: LedgerView },
     { id: "status", label: "Status", component: StatusView },
   ] as const;
+  // Reachable by address and from Status, but not a tab: you use it once.
+  const OTHER_VIEWS = [{ id: "import", label: "Import", component: ImportView }] as const;
 
   let route = $state<Route>(parseHash(location.hash));
 
@@ -35,7 +38,9 @@
 
   const status = poll<StatusReport>(() => "/api/status", 30_000);
 
-  const active = $derived(VIEWS.find((v) => v.id === route.view) ?? VIEWS[0]);
+  const active = $derived(
+    [...VIEWS, ...OTHER_VIEWS].find((v) => v.id === route.view) ?? VIEWS[0],
+  );
 </script>
 
 <main>

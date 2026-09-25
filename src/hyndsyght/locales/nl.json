@@ -45,5 +45,25 @@
     "category": "Categorieën",
     "client": "Klanten",
     "empty": "Geen activiteit in de afgelopen {days} dagen. Start de daemon om te beginnen met bijhouden."
+  },
+  "importer": {
+    "help": "Haal geschiedenis uit een andere tracker naar hyndsyght.",
+    "aw": {
+      "help": "Importeer venster- en afwezigheidsgeschiedenis uit ActivityWatch. Het stopt waar hyndsyght zelf begon met opnemen, en opnieuw draaien vervangt wat je eerder importeerde.",
+      "url": "Adres van een draaiende ActivityWatch-server.",
+      "file": "Lees een ActivityWatch-export (de JSON van /api/0/export) in plaats van een draaiende server.",
+      "host": "Importeer alleen buckets van deze computernaam. Herhaal het voor meer dan één.",
+      "dry_run": "Laat zien wat er geïmporteerd zou worden, zonder iets te schrijven.",
+      "undo": "Verwijder alles wat uit ActivityWatch is geïmporteerd.",
+      "bucket": "{bucket}: {rows} rijen, {first} tot {last}.",
+      "bucket_empty": "{bucket}: niets te importeren.",
+      "hidden": "{count} met een verborgen titel.",
+      "cutoff": "Gestopt op {time}, waar hyndsyght zelf begon met opnemen, dus geen minuut telt dubbel.",
+      "done": "{rows} rijen geïmporteerd.",
+      "dry_run_done": "Proefrun: {rows} rijen zouden geïmporteerd worden. Er is niets geschreven.",
+      "removed": "{count} rijen uit ActivityWatch verwijderd.",
+      "none": "Geen ActivityWatch-buckets voor vensters of afwezigheid gevonden.",
+      "unreachable": "Kan ActivityWatch niet bereiken op {url}. Start het, of geef een export mee met --file."
+    }
   }
 }

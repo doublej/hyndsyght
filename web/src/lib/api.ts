@@ -56,6 +56,14 @@ export function removeRule(category: string, pattern: string): Promise<RulesSumm
   return apiSend<RulesSummary>("DELETE", "/api/rules", { category, pattern });
 }
 
+export function importAwBucket(url: string, bucket: string): Promise<AwBucketResult> {
+  return apiSend<AwBucketResult>("POST", "/api/import/activitywatch", { url, bucket });
+}
+
+export function removeAwImport(): Promise<{ removed: number }> {
+  return apiSend<{ removed: number }>("DELETE", "/api/import/activitywatch", {});
+}
+
 /** Escape an app/window title into a literal, word-bounded pattern for /api/rules. */
 export function literalPattern(value: string): string {
   return `\\b${value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`;
@@ -158,4 +166,29 @@ export interface DayDetail extends DayStats {
   runs: AppRun[];
   agents: [number, number][];
   apps: { app: string; seconds: number }[];
+}
+
+export interface AwBucket {
+  id: string;
+  host: string | null;
+  source: "window" | "afk";
+  first: number | null;
+  last: number | null;
+  imported_rows: number;
+}
+
+export interface AwOverview {
+  url: string;
+  until: number | null; // where hyndsyght's own recording begins; the import stops there
+  buckets: AwBucket[];
+  skipped: string[];
+  imported_rows: number;
+}
+
+export interface AwBucketResult {
+  bucket_id: string;
+  rows: number;
+  hidden: number;
+  first: number | null;
+  last: number | null;
 }
