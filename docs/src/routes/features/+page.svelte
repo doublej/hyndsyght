@@ -1,5 +1,6 @@
 <script lang="ts">
   import Terminal from '$lib/components/Terminal.svelte'
+  import Screenshot from '$lib/components/Screenshot.svelte'
 
   const features = [
     {
@@ -15,12 +16,6 @@
       output: ['dev.browser'],
     },
     {
-      title: 'A dashboard with eight screens',
-      body: 'Today, Stats, Timeline, Categories, Claude sessions, Focus, Human vs agent and Status. Step through days, open any 5-minute block to see its events, assign a title to a category from the timeline, and follow an agent session turn by turn. It only answers on this computer and updates itself every 15 seconds.',
-      command: 'hyndsyght serve',
-      output: ['Uvicorn running on http://127.0.0.1:8420', '', 'Today   Stats   Timeline   Categories', 'Claude sessions   Focus   Human vs agent   Status'],
-    },
-    {
       title: 'Export your hours',
       body: 'A detailed report per local day with human time, unclassified time and one row per project, client and category, each with the top apps and titles as evidence. Or a spreadsheet with quarter-hour lines per day and client. Row IDs stay the same across re-exports.',
       command: 'hyndsyght export --since 2026-09-21 --csv',
@@ -32,6 +27,17 @@
       command: 'uv run --extra mcp hyndsyght mcp serve',
       output: ['list_recent_events', 'get_attention_summary', 'get_ledger_summary'],
     },
+  ]
+
+  const screens = [
+    { screen: 'overview', title: 'Today', body: 'Your day in 5-minute blocks, compared with the same time of day over the week before.' },
+    { screen: 'stats', title: 'Stats', body: 'Seven, 30 or 90 days: active time per day, when you tend to work, and your longest runs.' },
+    { screen: 'events', title: 'Timeline', body: 'Every raw event, filterable and shareable, with one click to put a title in a category.' },
+    { screen: 'categories', title: 'Categories', body: 'Time per category, a live preview for any title, and patterns you add or remove in place.' },
+    { screen: 'agents', title: 'Claude sessions', body: 'Recent sessions with their turns, sub-agents, agent time and last intent, and a trail per session.' },
+    { screen: 'attention', title: 'Focus', body: 'Your longest unbroken stretch, switches per hour and median session, with a 14-day trend.' },
+    { screen: 'ledger', title: 'Human vs agent', body: "Your minutes, your agents' minutes and the overlap, with a 14-day trend." },
+    { screen: 'status', title: 'Status', body: 'Is it recording, is Claude Code connected, can it read window titles, and when each source last reported.' },
   ]
 
   const alternatives = ['ActivityWatch', 'Timing', 'Toggl Track']
@@ -67,6 +73,24 @@
       </div>
     </section>
   {/each}
+
+  <section class="dashboard" id="dashboard" aria-labelledby="dashboard-title">
+    <div class="container">
+      <div class="feature-grid">
+        <h2 id="dashboard-title">A dashboard with eight screens</h2>
+        <p>Open it from the menu bar, or run <code>hyndsyght serve</code>. It answers only on this computer and updates itself every 15 seconds. Every screen has its own address, so Back, Forward and bookmarks work.</p>
+      </div>
+      <ul class="gallery">
+        {#each screens as s}
+          <li>
+            <Screenshot screen={s.screen} alt="The {s.title} screen of the hyndsyght dashboard, showing demo data." />
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </li>
+        {/each}
+      </ul>
+    </div>
+  </section>
 
   <section class="compare" aria-labelledby="compare-title">
     <div class="container">
@@ -136,6 +160,21 @@
 
   .feature p { color: var(--ink-soft); max-width: 40ch; }
 
+  .dashboard { padding-top: 0; }
+  .dashboard .feature-grid { align-items: end; margin-bottom: clamp(32px, 5vw, 56px); }
+  .dashboard .feature-grid h2 { margin-bottom: 0; }
+  .dashboard .feature-grid p { color: var(--ink-soft); max-width: 52ch; }
+
+  .gallery {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(36px, 5vw, 64px) var(--grid-gap);
+  }
+
+  .gallery h3 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; margin: 18px 0 4px; }
+  .gallery p { color: var(--ink-soft); max-width: 44ch; }
+
   .compare { padding-top: 0; }
   .compare h2 { border-top: 2px solid var(--ink); padding-top: clamp(32px, 5vw, 56px); margin-bottom: 28px; }
 
@@ -143,6 +182,6 @@
   .table-scroll .compare-table { min-width: 520px; }
 
   @media (max-width: 860px) {
-    .feature-grid, .head-grid { grid-template-columns: minmax(0, 1fr); }
+    .feature-grid, .head-grid, .gallery { grid-template-columns: minmax(0, 1fr); }
   }
 </style>

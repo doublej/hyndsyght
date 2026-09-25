@@ -3,6 +3,7 @@
   import { obliterate } from 'orphan-obliterator'
   import { onMount } from 'svelte'
   import Terminal from '$lib/components/Terminal.svelte'
+  import Screenshot from '$lib/components/Screenshot.svelte'
 
   type Mode = 'install' | 'run' | 'agent'
   type Tone = 'hi' | 'dim' | 'ok' | 'err'
@@ -161,6 +162,17 @@
     </div>
   </section>
 
+  <section class="dashboard" aria-labelledby="dashboard-title">
+    <div class="container">
+      <div class="dashboard-head">
+        <h2 id="dashboard-title">Your day, looked back on</h2>
+        <p>The dashboard lives in your menu bar and answers only on this computer. Every 5-minute block is coloured by what you did, with your agents in their own lane underneath.</p>
+      </div>
+      <Screenshot screen="overview" alt="The Today screen with demo data: 3 hours 56 minutes at the computer, a day timeline coloured by category with an agent lane below it, day stats, top apps and active minutes per hour." />
+      <a href="{base}/features#dashboard" class="dashboard-link">See all eight screens</a>
+    </div>
+  </section>
+
   <section class="features" aria-labelledby="features-title">
     <div class="container">
       <div class="features-grid">
@@ -303,7 +315,7 @@
     align-items: start;
   }
 
-  .demo h2, .features h2 {
+  .demo h2, .features h2, .dashboard h2 {
     font-size: clamp(1.75rem, 3.4vw, 2.5rem);
     font-weight: 600;
     letter-spacing: -0.02em;
@@ -351,6 +363,19 @@
 
   /* Keep the page still while steps with different output lengths swap in */
   .demo-grid :global(.terminal-body) { min-height: 11em; }
+
+  /* Dashboard: one real screen, full width */
+  .dashboard { padding-top: 0; }
+  .dashboard-head {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    gap: var(--grid-gap);
+    align-items: end;
+    margin-bottom: 32px;
+  }
+  .dashboard-head h2 { margin-bottom: 0; }
+  .dashboard-head p { color: var(--ink-soft); max-width: 52ch; }
+  .dashboard-link { display: inline-block; margin-top: 20px; font-weight: 500; }
 
   /* Features: a definition list, not cards */
   .features { padding-top: 0; }
@@ -410,7 +435,7 @@
 
 
   @media (max-width: 860px) {
-    .hero-grid, .demo-grid, .features-grid, .cta-inner { grid-template-columns: minmax(0, 1fr); }
+    .hero-grid, .demo-grid, .features-grid, .cta-inner, .dashboard-head { grid-template-columns: minmax(0, 1fr); }
     .hero-grid { gap: 28px; }
     .description { min-height: 0; }
   }
