@@ -127,6 +127,7 @@
             </button>
           </div>
           <a href="https://github.com/doublej/hyndsyght" target="_blank" rel="noopener noreferrer" class="source-link">Read the source on GitHub</a>
+          <a href="https://doublej.github.io/hyndsyght-mac/" class="source-link">Rather have a native app? Get hyndsyght for Mac</a>
         </div>
       </div>
     </div>
@@ -202,7 +203,7 @@
             {copied === 'cta' ? 'Copied' : 'Copy'}
           </button>
         </div>
-        <p>Source, issues and releases on <a href="https://github.com/doublej/hyndsyght" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+        <p>Source, issues and releases on <a href="https://github.com/doublej/hyndsyght" target="_blank" rel="noopener noreferrer">GitHub</a>. Rather click than type? <a href="https://doublej.github.io/hyndsyght-mac/">hyndsyght for Mac</a> is a native app that keeps the same data.</p>
       </div>
     </div>
   </section>
@@ -306,6 +307,7 @@
   .copy-btn:focus-visible { outline-color: var(--plate); }
 
   .source-link { font-weight: 500; margin-top: 4px; }
+  .source-link + .source-link { margin-top: 0; }
 
   /* Demo: the step list is a real sequence, so it is numbered */
   .demo-grid {

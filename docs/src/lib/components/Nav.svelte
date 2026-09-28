@@ -6,6 +6,7 @@
   const links = [
     { href: `${base}/`, label: 'Home' },
     { href: `${base}/features`, label: 'Features' },
+    { href: 'https://doublej.github.io/hyndsyght-mac/', label: 'Mac app' },
     { href: 'https://github.com/doublej/hyndsyght', label: 'GitHub', external: true },
   ]
 
